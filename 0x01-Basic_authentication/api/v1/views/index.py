@@ -20,9 +20,9 @@ def unauthorized():
     """
     abort(401)
 
-@app_views.route('/forbiden', strict_slashes=False)
+@app_views.route('/forbidden', strict_slashes=False)
 def forbiden():
-    """ GET /api/v1/forbiden
+    """ GET /api/v1/forbidden
         Return
             - abort
     """
