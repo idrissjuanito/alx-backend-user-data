@@ -12,7 +12,7 @@ class Auth:
     def authorization_header(self, request=None) -> str:
         """ Gets authorization header for request
         """
-        None
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ Gets current user making request
