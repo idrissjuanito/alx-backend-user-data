@@ -47,13 +47,10 @@ class BasicAuth(Auth):
             return None
         if user_pwd is None or type(user_pwd) is not str:
             return None
-        User.load_from_file()
-        users = User.search({"email": user_email, "password": user_pwd})
-        print(users)
+        users = User.search({"email": user_email})
         if len(users) == 0:
             return None
         user = users[0]
         if not user.is_valid_password(user_pwd):
-            print(user)
             return None
         return user
