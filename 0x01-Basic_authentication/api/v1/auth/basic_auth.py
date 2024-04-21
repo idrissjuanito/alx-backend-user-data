@@ -26,7 +26,7 @@ class BasicAuth(Auth):
             return None
         try:
             dcoded = base64.b64decode(ah)
-            return dcoded
+            return dcoded.decode("utf8")
         except Exception:
             return None
 
