@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """DB module
 """
-from collections.abc import ByteString
 from typing import TypeVar
 from sqlalchemy import create_engine
 from sqlalchemy.exc import InvalidRequestError
