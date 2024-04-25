@@ -5,7 +5,7 @@ from os import getenv
 from werkzeug.wrappers import auth
 from models.user import User
 from api.v1.views import app_views
-from flask import jsonify, make_response, request
+from flask import jsonify, make_response, request, abort
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
@@ -29,3 +29,12 @@ def login():
     resp = make_response(user.to_json())
     resp.set_cookie(getenv('SESSION_NAME'), session_id)
     return resp
+
+
+@app_views.route('/auth_session/logout', methods=['DELETE'])
+def logout():
+    """ Session logout handler """
+    from api.v1.app import auth
+    if not auth.destroy_session(request):
+        abort(404)
+    return jsonify({})
