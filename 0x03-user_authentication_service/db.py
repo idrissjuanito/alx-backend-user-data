@@ -34,6 +34,8 @@ class DB:
 
     def add_user(self, email: str, hashed_password: str) -> TypeVar("User"):
         """ adds a user to the database """
+        if email is None or hashed_password is None:
+            return None
         user = User()
         user.email = email
         user.hashed_password = hashed_password
