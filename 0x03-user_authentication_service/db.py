@@ -36,9 +36,9 @@ class DB:
         """ adds a user to the database """
         if email is None or hashed_password is None:
             return None
-        user = User()
-        user.email = email
-        user.hashed_password = hashed_password
+        user = User(email, hashed_password)
+        # user.email = email
+        # user.hashed_password = hashed_password
         self._session.add(user)
         self._session.commit()
         return user
