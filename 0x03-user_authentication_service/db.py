@@ -32,18 +32,18 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email: str, hashed_password: str) -> TypeVar("User"):
+    def add_user(self, email: str, hashed_password: str):
         """ adds a user to the database """
         if email is None or hashed_password is None:
             return None
-        user = User(email, hashed_password)
-        # user.email = email
-        # user.hashed_password = hashed_password
+        user = User()
+        user.email = email
+        user.hashed_password = hashed_password
         self._session.add(user)
         self._session.commit()
         return user
 
-    def find_user_by(self, **kwargs) -> TypeVar("User"):
+    def find_user_by(self, **kwargs):
         """ Finds a user based on given keyword args """
         for k, v in kwargs.items():
             if not hasattr(User, k):
